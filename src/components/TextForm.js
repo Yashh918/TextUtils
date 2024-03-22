@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 export default function TextForm(props) {
     const handleUpClick = () => {
-        // console.log("UpperCase was clicked" + text);
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("Converted to uppercase", "success");
@@ -24,6 +23,7 @@ export default function TextForm(props) {
         let copy = document.getElementById("myBox");
         copy.select();
         navigator.clipboard.writeText(copy.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copied to clipboard", "success");
     }
 
@@ -34,11 +34,11 @@ export default function TextForm(props) {
     }
 
     const handleOnChange = (event) => {
-        // console.log("handle onChange");
         setText(event.target.value)
     }
 
     const [text, setText] = useState('');
+    
     const wordCount = text.split(/\s+/).filter(Boolean).length;
     const letterCount = text.length;
 
@@ -52,7 +52,7 @@ export default function TextForm(props) {
 
     return (
         <>
-            <div className="container" style={containerStyle}>
+            <div className="container py-5" style={containerStyle}>
                 <h4>{props.heading}</h4>
                 <div className="mb-3">
                     <textarea
@@ -63,11 +63,11 @@ export default function TextForm(props) {
                         rows="12"
                         style={container2Style} />
                 </div>
-                <button className="btn btn-primary mx-2" onClick={handleUpClick}>UPPERCASE</button>
-                <button className="btn btn-primary mx-2" onClick={handleLoClick}>lowercase</button>
-                <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear</button>
-                <button className="btn btn-primary mx-2" onClick={handleCopyClick}>Copy</button>
-                <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Extra spaces</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleUpClick}>UPPERCASE</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleLoClick}>lowercase</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleClearClick}>Clear</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleCopyClick}>Copy</button>
+                <button disabled={text.length === 0} className="btn btn-primary m-1" onClick={handleExtraSpaces}>Extra spaces</button>
             </div>
             <div className="container my-3" style={containerStyle}>
                 <h4>
