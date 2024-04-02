@@ -10,7 +10,7 @@ export default function About(props) {
 
     return (
         <>
-            <div classNameName="container" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
+            <div className="container" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
                 <h3 className="m-3">
                     About Us
                 </h3>

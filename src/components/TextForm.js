@@ -47,7 +47,7 @@ export default function TextForm(props) {
     }
     const container2Style = {
         color: props.mode === 'dark' ? 'white' : 'black',
-        backgroundColor: props.mode === 'dark' ? 'rgb(0 5 17)' : 'white',
+        backgroundColor: props.mode === 'dark' ? 'rgb(0 5 17)' : 'white'
     }
 
     return (
@@ -77,6 +77,7 @@ export default function TextForm(props) {
                     {wordCount} words and {letterCount} characters <br />
                     {0.008 * wordCount} minutes read
                 </p>
+                
                 <h4>
                     Preview
                 </h4>
